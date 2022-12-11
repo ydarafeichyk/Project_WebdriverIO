@@ -1,0 +1,46 @@
+const { BasePage } = require('../BasePage');
+
+class VeloPage extends BasePage {
+  constructor() {
+    super();
+    this.btnVelo = "//a[@itemprop='url']";
+    this.mountainVelo = "//div[@class='catalog-section-list-item']";
+    this.cityVelo = "(//div[@class='catalog-section-list-item'])[2]";
+    this.teenageVelo = "(//div[@class='catalog-section-list-item'])[4]";
+    this.linkQuickView = "//span[@class='getFastView']";
+    this.btnInCart = "(//div[@class='appFastViewInformationColumn']//a)[2]";
+    this.btnCart = "(//a[contains(@class,'addCart changeID')])[2]";
+    this.btnGoToCart = "(//span[@class='text'])[2]";
+    this.linkCityVelo = "(//span[@class='middle'])[1]";
+    this.icon_AddWish = "//a[@class='elem addWishlist']";
+    this.icon_addCompare = "//a[contains(@class,'elem addCompare')]";
+    this.linkVelo = "(//span[@class='middle'])[3]";
+    this.link_AddReview = '.labelDotted';
+    this.btn_OneClick = "(//a[contains(@class, 'fastBack label changeID')])[2]";
+    this.btn_Order = "(//a[@class='selected'])[2]";
+  }
+  async addQuickProduct() {
+    await browser.pause(2000);
+    await $(this.linkQuickView).waitForDisplayed();
+    await $(this.linkQuickView).click();
+    await browser.pause(2000);
+    await $(this.btnInCart).click();
+    await browser.pause(2000);
+  }
+  async addProduct() {
+    await $(this.linkCityVelo).waitForDisplayed();
+    await $(this.linkCityVelo).click();
+    await browser.pause(2000);
+    await $(this.btnCart).click();
+    await $(this.btnGoToCart).waitForClickable();
+    await $(this.btnGoToCart).click();
+  }
+  async ordering() {
+    await $(this.btn_Order).scrollIntoView();
+    await $(this.btn_Order).waitForClickable();
+    await $(this.btn_Order).click();
+    await browser.pause(2000);
+  }
+}
+
+module.exports = { VeloPage };
