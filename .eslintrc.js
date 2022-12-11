@@ -6,14 +6,16 @@ module.exports = {
     node: true,
     commonjs: true,
   },
-  plugins: ['wdio'],
-  extends: ['airbnb-base', 'plugin:wdio/recommended'],
+  plugins: ['wdio', 'mocha'],
+  extends: ['airbnb-base', 'plugin:wdio/recommended', 'plugin:mocha/recommended'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
   rules: {
+    'mocha/no-skipped-tests': 'error',
+    'mocha/no-exclusive-tests': 'error',
     'wdio/no-pause': 0,
     'no-restricted-syntax': 0,
     'no-await-in-loop': 'off',

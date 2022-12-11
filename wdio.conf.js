@@ -254,7 +254,9 @@ exports.config = {
    * @param {Boolean} result.passed    true if test has passed, otherwise false
    * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
    */
-  async afterTest(test, context, { error, result, duration, passed, retries }) {
+  async afterTest(test, context, {
+    error, result, duration, passed, retries,
+  }) {
     if (!passed) {
       await browser.takeScreenshot();
     }

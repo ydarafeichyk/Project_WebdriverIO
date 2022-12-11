@@ -1,0 +1,17 @@
+module.exports = {
+    bail: false,
+    color: true,
+    delay: false,
+    diff: true,
+    exit: false, 
+    growl: false,
+    parallel: false,
+    recursive: false,
+    reporter: 'mochawesome',
+    retries: 1,
+    slow: '1500',
+    sort: false,
+    spec: ['test/**/*.spec.js'], 
+    timeout: '1500', 
+    watch: false,
+  };
