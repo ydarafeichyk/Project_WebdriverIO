@@ -1,5 +1,7 @@
 const { BasePage } = require('../BasePage');
 
+const I = require('../helpers/BaseElements');
+
 class LoginPage extends BasePage {
   constructor() {
     super();
@@ -10,9 +12,9 @@ class LoginPage extends BasePage {
     this.linkForgot = '.forgot';
   }
   async login(name, password) {
-    await $(this.input_login).setValue(name);
-    await $(this.input_password).setValue(password);
-    await $(this.btnSubmit).click();
+    await I.setValue(this.input_login, name);
+    await I.setValue(this.input_password, password);
+    await I.click(this.btnSubmit);
   }
 }
 

@@ -1,5 +1,7 @@
 const { BasePage } = require('../BasePage');
 
+const I = require('../../helpers/BaseElements');
+
 class VeloPage extends BasePage {
   constructor() {
     super();
@@ -22,23 +24,22 @@ class VeloPage extends BasePage {
   async addQuickProduct() {
     await browser.pause(2000);
     await $(this.linkQuickView).waitForDisplayed();
-    await $(this.linkQuickView).click();
+    await I.click(this.linkQuickView);
     await browser.pause(2000);
-    await $(this.btnInCart).click();
+    await I.click(this.btnInCart);
     await browser.pause(2000);
   }
   async addProduct() {
     await $(this.linkCityVelo).waitForDisplayed();
-    await $(this.linkCityVelo).click();
+    await I.click(this.linkCityVelo);
     await browser.pause(2000);
-    await $(this.btnCart).click();
+    await I.click(this.btnCart);
     await $(this.btnGoToCart).waitForClickable();
-    await $(this.btnGoToCart).click();
+    await I.click(this.btnGoToCart);
   }
   async ordering() {
-    await $(this.btn_Order).scrollIntoView();
-    await $(this.btn_Order).waitForClickable();
-    await $(this.btn_Order).click();
+    await I.scroll(this.btn_Order);
+    await I.click(this.btn_Order);
     await browser.pause(2000);
   }
 }

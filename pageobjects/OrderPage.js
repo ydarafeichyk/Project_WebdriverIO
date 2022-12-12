@@ -1,5 +1,7 @@
 const { BasePage } = require('./BasePage');
 
+const I = require('../helpers/BaseElements');
+
 class OrderPage extends BasePage {
   constructor() {
     super();
@@ -20,31 +22,28 @@ class OrderPage extends BasePage {
     this.orderNumber = '(//td)[1]';
   }
   async buyInOneClick(name, phone, message) {
-    await $(this.input_FastName).setValue(name);
+    await I.setValue(this.input_FastName, name);
     await $(this.input_FastPhone).waitForClickable();
-    await $(this.input_FastPhone).setValue(phone);
+    await I.setValue(this.input_FastPhone, phone);
     await $(this.input_message).waitForClickable();
-    await $(this.input_message).setValue(message);
-    await $(this.checkbox).waitForClickable();
-    await $(this.checkbox).click();
-    await $(this.btnFormSubmit).click();
+    await I.setValue(this.input_message, message);
+    await I.click(this.checkbox);
+    await I.click(this.btnFormSubmit);
     await browser.pause(2000);
   }
   async buyProduct(name, email, phone, address, message) {
-    await $(this.btn_City).click();
-    await $(this.btn_Next).scrollIntoView();
-    await $(this.btn_Next).waitForClickable();
-    await $(this.btn_Next).click();
-    await $(this.btn_Next).scrollIntoView();
-    await $(this.btn_Next).waitForClickable();
-    await $(this.btn_Next).click();
-    await $(this.input_FirstName).setValue(name);
-    await $(this.input_email).setValue(email);
-    await $(this.input_phone).setValue(phone);
-    await $(this.input_address).setValue(address);
-    await $(this.input_comment).setValue(message);
-    await $(this.btn_Next).click();
-    await $(this.btn_Order).click();
+    await I.click(this.btn_City);
+    await I.scroll(this.btn_Next);
+    await I.click(this.btn_Next);
+    await I.scroll(this.btn_Next);
+    await I.click(this.btn_Next);
+    await I.setValue(this.input_FirstName, name);
+    await I.setValue(this.input_email, email);
+    await I.setValue(this.input_phone, phone);
+    await I.setValue(this.input_address, address);
+    await I.setValue(this.input_comment, message);
+    await I.click(this.btn_Next);
+    await I.click(this.btn_Order);
     await browser.pause(2000);
   }
 }

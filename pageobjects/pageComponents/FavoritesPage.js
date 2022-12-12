@@ -1,5 +1,7 @@
 const { BasePage } = require('../BasePage');
 
+const I = require('../../helpers/BaseElements');
+
 class FavoritesPage extends BasePage {
   constructor() {
     super();
@@ -10,16 +12,13 @@ class FavoritesPage extends BasePage {
     this.title_Wish = '//h3';
   }
   async sendEmail() {
-    await $(this.input_Email).scrollIntoView();
-    await $(this.input_Email).waitForClickable();
-    await $(this.input_Email).setValue('test2022project@mail.ru');
-    await $(this.btn_SendEmail).waitForClickable();
-    await $(this.btn_SendEmail).click();
+    await I.scroll(this.input_Email);
+    await I.setValue(this.input_Email, 'test2022project@mail.ru');
+    await I.click(this.btn_SendEmail);
     await browser.pause(2000);
   }
   async removeFromWish() {
-    await $(this.icon_Del).waitForClickable();
-    await $(this.icon_Del).click();
+    await I.click(this.icon_Del);
     await browser.pause(1000);
   }
 }

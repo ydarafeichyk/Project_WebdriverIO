@@ -2,6 +2,7 @@ const { expect } = require('chai');
 const { MainPage } = require('../pageobjects/MainPage');
 const { ComparisonPage } = require('../pageobjects/pageComponents/ComparisonPage');
 const { VeloPage } = require('../pageobjects/pageComponents/VeloPage');
+const I = require('../helpers/BaseElements');
 
 const mainPage = new MainPage();
 const comparisonPage = new ComparisonPage();
@@ -11,11 +12,11 @@ describe('Testing the comparison module', function () {
   beforeEach(async function () {
     await mainPage.navigate('https://velosiped.by/');
     await browser.pause(2000);
-    await $(veloPage.btnVelo).click();
-    await $(veloPage.teenageVelo).click();
-    await $(veloPage.linkCityVelo).click();
-    await $(veloPage.icon_addCompare).click();
-    await $(comparisonPage.btn_Comparison).click();
+    await I.click(veloPage.btnVelo);
+    await I.click(veloPage.teenageVelo);
+    await I.click(veloPage.linkCityVelo);
+    await I.click(veloPage.icon_addCompare);
+    await I.click(comparisonPage.btn_Comparison);
     await browser.pause(2000);
   });
 

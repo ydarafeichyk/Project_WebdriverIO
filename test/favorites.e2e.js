@@ -2,6 +2,7 @@ const { expect } = require('chai');
 const { MainPage } = require('../pageobjects/MainPage');
 const { FavoritesPage } = require('../pageobjects/pageComponents/FavoritesPage');
 const { VeloPage } = require('../pageobjects/pageComponents/VeloPage');
+const I = require('../helpers/BaseElements');
 
 const mainPage = new MainPage();
 const favoritesPage = new FavoritesPage();
@@ -11,11 +12,11 @@ describe('Favorites module testing', function () {
   beforeEach(async function () {
     await mainPage.navigate('https://velosiped.by/');
     await browser.pause(2000);
-    await $(veloPage.btnVelo).click();
-    await $(veloPage.teenageVelo).click();
-    await $(veloPage.linkCityVelo).click();
-    await $(veloPage.icon_AddWish).click();
-    await $(favoritesPage.btn_Favorite).click();
+    await I.click(veloPage.btnVelo);
+    await I.click(veloPage.teenageVelo);
+    await I.click(veloPage.linkCityVelo);
+    await I.click(veloPage.icon_AddWish);
+    await I.click(favoritesPage.btn_Favorite);
     await browser.pause(2000);
   });
   afterEach(async function () {

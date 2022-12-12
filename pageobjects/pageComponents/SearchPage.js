@@ -1,5 +1,7 @@
 const { BasePage } = require('../BasePage');
 
+const I = require('../../helpers/BaseElements');
+
 class SearchPage extends BasePage {
   constructor() {
     super();
@@ -11,34 +13,32 @@ class SearchPage extends BasePage {
     this.btn_Show = '#modef_send';
   }
   async searchByBrand(brand) {
-    await $(this.input_SearchField).click();
-    await $(this.input_SearchField).setValue(brand);
+    await I.click(this.input_SearchField);
+    await I.setValue(this.input_SearchField, brand);
     await browser.keys('Enter');
   }
 
   async indicatePrice(min, max) {
-    await $(this.priceMin).scrollIntoView();
-    await $(this.priceMin).setValue(400);
+    await I.scroll(this.priceMin);
+    await I.setValue(this.priceMin, 400);
     await browser.pause(2000);
-    await $(this.priceMax).setValue(1000);
+    await I.setValue(this.priceMax, 1000);
   }
   async indicateBrand() {
-    await $(this.brandStels).scrollIntoView();
-    await $(this.brandStels).waitForClickable();
-    await $(this.brandStels).click();
+    await I.scroll(this.brandStels);
+    await I.click(this.brandStels);
     await browser.pause(2000);
   }
 
   async indicateClass() {
-    await $(this.cityClass).scrollIntoView();
-    await $(this.cityClass).waitForClickable();
-    await $(this.cityClass).click();
+    await I.scroll(this.cityClass);
+    await I.click(this.cityClass);
     await browser.pause(2000);
   }
 
   async showSelected() {
     await $(this.btn_Show).waitForDisplayed({ timeout: '5000' });
-    await $(this.btn_Show).click();
+    await I.click(this.btn_Show);
   }
 }
 

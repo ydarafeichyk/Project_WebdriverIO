@@ -1,4 +1,5 @@
 const { BasePage } = require('./BasePage');
+const I = require('../helpers/BaseElements');
 
 class ReviewPage extends BasePage {
   constructor() {
@@ -18,22 +19,22 @@ class ReviewPage extends BasePage {
       return document.querySelector("span[class='rating']").click();
     });
     await browser.pause(2000);
-    await $(this.experience).click();
-    await $(this.input_advantage).setValue(advantage);
-    await $(this.input_disadvantage).setValue(disadvantage);
-    await $(this.input_comment).setValue(impession);
-    await $(this.input_name).setValue(name);
-    await $(this.btnSubmit).click();
+    await I.click(this.experience);
+    await I.setValue(this.input_advantage, advantage);
+    await I.setValue(this.input_disadvantage, disadvantage);
+    await I.setValue(this.input_comment, impession);
+    await I.setValue(this.input_name, name);
+    await I.click(this.btnSubmit);
   }
 
   async addReviewWithautField(advantage, disadvantage, impession, name) {
     await browser.pause(2000);
-    await $(this.experience).click();
-    await $(this.input_advantage).setValue(advantage);
-    await $(this.input_disadvantage).setValue(disadvantage);
-    await $(this.input_comment).setValue(impession);
-    await $(this.input_name).setValue(name);
-    await $(this.btnSubmit).click();
+    await I.click(this.experience);
+    await I.setValue(this.input_advantage, advantage);
+    await I.setValue(this.input_disadvantage, disadvantage);
+    await I.setValue(this.input_comment, impession);
+    await I.setValue(this.input_name, name);
+    await I.click(this.btnSubmit);
   }
 }
 

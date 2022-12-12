@@ -1,5 +1,7 @@
 const { BasePage } = require('../BasePage');
 
+const I = require('../../helpers/BaseElements');
+
 class ComparisonPage extends BasePage {
   constructor() {
     super();
@@ -11,8 +13,7 @@ class ComparisonPage extends BasePage {
 
   async removeFromComparison() {
     await $(this.element_location).scrollIntoView();
-    await $(this.iconDel).waitForClickable();
-    await $(this.iconDel).click();
+    await I.click(this.iconDel);
     await browser.pause(1000);
   }
 }

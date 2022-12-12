@@ -1,4 +1,5 @@
 const { BasePage } = require('./BasePage');
+const I = require('../helpers/BaseElements');
 
 class ShoppingCartPage extends BasePage {
   constructor() {
@@ -9,8 +10,7 @@ class ShoppingCartPage extends BasePage {
   }
   async deleteProduct() {
     await browser.pause(2000);
-    await $(this.btnDel).waitForClickable();
-    await $(this.btnDel).click();
+    await I.click(this.btnDel);
     await browser.pause(2000);
   }
 }

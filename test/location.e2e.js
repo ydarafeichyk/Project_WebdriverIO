@@ -1,6 +1,7 @@
 const { expect } = require('chai');
 const { MainPage } = require('../pageobjects/MainPage');
 const { LocationPage } = require('../pageobjects/pageComponents/LocationPage');
+const I = require('../helpers/BaseElements');
 
 const mainPage = new MainPage();
 const locationPage = new LocationPage();
@@ -8,7 +9,7 @@ const locationPage = new LocationPage();
 describe('testing location change', function () {
   beforeEach(async function () {
     mainPage.navigate('https://velosiped.by/');
-    await $(locationPage.link_location).click();
+    await I.click(locationPage.link_location);
     await browser.pause(2000);
   });
   afterEach(async function () {

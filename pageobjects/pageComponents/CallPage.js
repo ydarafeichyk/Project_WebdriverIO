@@ -1,4 +1,5 @@
 const { BasePage } = require('../BasePage');
+const I = require('../../helpers/BaseElements');
 
 class CallPage extends BasePage {
   constructor() {
@@ -11,15 +12,15 @@ class CallPage extends BasePage {
   }
 
   async requestCall(phone, name) {
-    await $(this.input_Phone).setValue(phone);
-    await $(this.input_Name).setValue(name);
+    await I.setValue(this.input_Phone, phone);
+    await I.setValue(this.input_Name, name);
     await browser.pause(2000);
 
     await browser.execute(function () {
       return document.querySelector('label.label-for').click();
     });
     await browser.pause(5000);
-    await $(this.btnSendWebForm).click();
+    await I.click(this.btnSendWebForm);
     await browser.pause(1000);
   }
 }

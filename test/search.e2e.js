@@ -3,6 +3,7 @@ const { MainPage } = require('../pageobjects/MainPage');
 const { SearchPage } = require('../pageobjects/pageComponents/SearchPage');
 const { SearchResultPage } = require('../pageobjects/SearchResultPage');
 const { VeloPage } = require('../pageobjects/pageComponents/VeloPage');
+const I = require('../helpers/BaseElements');
 
 const mainPage = new MainPage();
 const searchPage = new SearchPage();
@@ -24,7 +25,7 @@ describe('Search module testing', function () {
   });
 
   it('Check search by filter', async function () {
-    await $(veloPage.btnVelo).click();
+    await I.click(veloPage.btnVelo);
     await searchPage.indicatePrice(400, 1000);
     await searchPage.indicateBrand();
     await searchPage.indicateClass();

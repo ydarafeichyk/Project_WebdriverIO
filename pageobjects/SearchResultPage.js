@@ -5,9 +5,6 @@ class SearchResultPage extends BasePage {
     super();
     this.title_Search = '//h3';
   }
-  async deleteProduct() {
-
-  }
 }
 
 module.exports = { SearchResultPage };
