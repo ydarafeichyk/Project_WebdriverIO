@@ -58,7 +58,7 @@ The framework is designed for automated testing of the site in the browser.
 ~~~
 + Running [Api tests](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_documentLink)
 ~~~
-npm run test
+> npm run test
 ~~~
 + Open [HTML Allure report](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_documentLink)
 ~~~

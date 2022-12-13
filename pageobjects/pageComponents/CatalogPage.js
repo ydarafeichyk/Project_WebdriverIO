@@ -2,7 +2,7 @@ const { BasePage } = require('../BasePage');
 
 const I = require('../../helpers/BaseElements');
 
-class VeloPage extends BasePage {
+class CatalogPage extends BasePage {
   constructor() {
     super();
     this.btnVelo = "//a[@itemprop='url']";
@@ -44,4 +44,4 @@ class VeloPage extends BasePage {
   }
 }
 
-module.exports = { VeloPage };
+module.exports = { CatalogPage };

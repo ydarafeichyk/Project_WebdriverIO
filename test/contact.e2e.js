@@ -1,19 +1,19 @@
 const { expect } = require('chai');
 const { MainPage } = require('../pageobjects/MainPage');
-const { VeloPage } = require('../pageobjects/pageComponents/VeloPage');
+const { CatalogPage } = require('../pageobjects/pageComponents/CatalogPage');
 const { CallPage } = require('../pageobjects/pageComponents/CallPage');
 const { ReviewPage } = require('../pageobjects/ReviewPage');
 const I = require('../helpers/BaseElements');
 
 const mainPage = new MainPage();
-const veloPage = new VeloPage();
+const catalogPage = new CatalogPage();
 const callPage = new CallPage();
 const reviewPage = new ReviewPage();
 
 describe('Testing communication module', function () {
   beforeEach(async function () {
     await mainPage.navigate('https://velosiped.by/');
-    await browser.pause(2000);
+    await browser.pause(1000);
   });
   afterEach(async function () {
     await browser.reloadSession();
@@ -26,19 +26,19 @@ describe('Testing communication module', function () {
   });
 
   it('Check function feedback', async function () {
-    await I.click(veloPage.btnVelo);
-    await I.click(veloPage.mountainVelo);
-    await I.click(veloPage.linkVelo);
-    await I.click(veloPage.link_AddReview);
+    await I.click(catalogPage.btnVelo);
+    await I.click(catalogPage.mountainVelo);
+    await I.click(catalogPage.linkVelo);
+    await I.click(catalogPage.link_AddReview);
     await reviewPage.addReview('Fine', 'No', 'Well', 'Name');
     expect(await $(reviewPage.reviewMessage).getText()).to.contain('Отзыв добавлен');
   });
 
   it('Check the feedback function without filling in the required fields', async function () {
-    await I.click(veloPage.btnVelo);
-    await I.click(veloPage.mountainVelo);
-    await I.click(veloPage.linkVelo);
-    await I.click(veloPage.link_AddReview);
+    await I.click(catalogPage.btnVelo);
+    await I.click(catalogPage.mountainVelo);
+    await I.click(catalogPage.linkVelo);
+    await I.click(catalogPage.link_AddReview);
     await reviewPage.addReviewWithautField('Fine', 'No', 'Well', 'Name');
     expect(await $(reviewPage.errorMessage).getText()).to.contain('Заполните все поля!');
   });

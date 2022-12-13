@@ -2,13 +2,13 @@ const { expect } = require('chai');
 const { MainPage } = require('../pageobjects/MainPage');
 const { SearchPage } = require('../pageobjects/pageComponents/SearchPage');
 const { SearchResultPage } = require('../pageobjects/SearchResultPage');
-const { VeloPage } = require('../pageobjects/pageComponents/VeloPage');
+const { CatalogPage } = require('../pageobjects/pageComponents/CatalogPage');
 const I = require('../helpers/BaseElements');
 
 const mainPage = new MainPage();
 const searchPage = new SearchPage();
 const searchResultPage = new SearchResultPage();
-const veloPage = new VeloPage();
+const catalogPage = new CatalogPage();
 
 describe('Search module testing', function () {
   beforeEach(async function () {
@@ -25,7 +25,7 @@ describe('Search module testing', function () {
   });
 
   it('Check search by filter', async function () {
-    await I.click(veloPage.btnVelo);
+    await I.click(catalogPage.btnVelo);
     await searchPage.indicatePrice(400, 1000);
     await searchPage.indicateBrand();
     await searchPage.indicateClass();
